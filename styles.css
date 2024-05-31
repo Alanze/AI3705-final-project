@@ -90,3 +90,24 @@ body {
     text-align: center;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
   }
+
+  @keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+  }
+  
+  h1 {
+    animation: fadeIn 2s ease-in-out;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+  
+  label {
+    font-size: 14px;
+  }
+  
+  input, textarea {
+    font-size: 14px;
+  }
