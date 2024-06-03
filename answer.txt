@@ -1,0 +1,52 @@
+> Assistant: Based on the requirement document, I will extract the information into structured text using the defined module types: Object, Status, Module, and Action.
+
+**Objects:**
+
+1. Workpiece
+2. Conveyor belt
+3. Barrier arm
+4. Sorting arm 1
+5. Sorting arm 2
+6. Chute 1
+7. Chute 2
+8. Chute 3
+
+**Statuses:**
+
+1. atFront (Workpiece is at the front of the conveyor belt)
+2. stopped (Conveyor belt is stopped)
+3. extended (Barrier arm is extended)
+4. retracted (Barrier arm is retracted)
+5. full (Chute is full)
+6. notFull (Chute is not full)
+
+**Modules:**
+
+1. Color detection module
+2. Electromagnetic sorting arms
+3. Retroreflective photoelectric sensor
+
+**Actions:**
+
+1. Detect (Color detection module detects the material and color of the workpiece)
+2. Stop (Conveyor belt stops)
+3. Extend (Barrier arm extends)
+4. Retract (Barrier arm retracts)
+5. Sort (Sorting arm sorts the workpiece into a chute)
+6. Start (Conveyor belt starts moving)
+7. Store (Workpiece is stored in a chute)
+
+**Structured Text:**
+
+1. Workpiece Object, atFront Status, conveyorBelt Object
+2. conveyorBelt Object, stopped Status
+3. barrierArm Module, extended Status
+4. sortingArm1 Module, retracted Status
+5. sortingArm2 Module, retracted Status
+6. chute1 Object, notFull Status
+7. chute2 Object, notFull Status
+8. chute3 Object, notFull Status
+9. colorDetectionModule Module, Detect Action
+10. electromagneticSortingArms Module, Sort
+
+==================================
