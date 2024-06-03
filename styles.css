@@ -111,3 +111,26 @@ body {
   input, textarea {
     font-size: 14px;
   }
+
+  #message {
+    background-color: #f0f0f0; /* 背景颜色 */
+    color: #333; /* 字体颜色 */
+    font-size: 16px; /* 字体大小 */
+    font-family: Arial, sans-serif; /* 字体类型 */
+    padding: 20px; /* 内边距 */
+    margin: 10px; /* 外边距 */
+    border-radius: 5px; /* 边框圆角 */
+  }
+
+  #message h3 {
+    color: #666; /* 标题颜色 */
+    font-size: 24px; /* 标题大小 */
+  }
+
+  #message ol {
+    padding-left: 40px; /* 列表内边距 */
+  }
+
+  #message ol li {
+    line-height: 1.6; /* 列表行高 */
+  }
