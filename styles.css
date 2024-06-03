@@ -134,3 +134,26 @@ body {
   #message ol li {
     line-height: 1.6; /* 列表行高 */
   }
+
+  @keyframes move {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100px); }
+  }
+
+  .conveyor {
+    display: flex;
+    overflow: hidden;
+    width: 200px;
+    border: 1px solid black;
+    margin-bottom: 20px;
+  }
+
+  .item {
+    width: 100px;
+    height: 100px;
+    animation: move 2s linear infinite;
+  }
+
+  .item:nth-child(1) { background: red; }
+  .item:nth-child(2) { background: gold; }
+  .item:nth-child(3) { background: black; }
