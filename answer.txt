@@ -1,5 +1,3 @@
-> Assistant: Based on the requirement document, I will extract the information into structured text using the defined module types: Object, Status, Module, and Action.
-
 **Objects:**
 
 1. Workpiece
@@ -48,5 +46,3 @@
 8. chute3 Object, notFull Status
 9. colorDetectionModule Module, Detect Action
 10. electromagneticSortingArms Module, Sort
-
-==================================
