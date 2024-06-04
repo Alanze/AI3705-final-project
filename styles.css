@@ -135,4 +135,66 @@ body {
     line-height: 1.6; /* 列表行高 */
   }
 
-  
+  .sorting-system {
+  width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.input-area {
+  margin-bottom: 20px;
+}
+
+.input-text {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 200px;
+}
+
+.sort-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.chutes {
+  display: flex;
+  justify-content: space-between;
+}
+
+.chute {
+  width: 200px;
+  height: 300px;
+  border: 3px solid #270404;
+  overflow-y: auto;
+}
+
+.item {
+  width: 50px;
+  height: 50px;
+  margin: 10px auto;
+}
+
+.item1 {
+  background-color: black;
+}
+
+.item2 {
+  background-color: gold;
+}
+
+.item3 {
+  background-color: red;
+}
+
+.messages {
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: bold;
+}

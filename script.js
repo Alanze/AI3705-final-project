@@ -85,78 +85,58 @@ document.getElementById('myForm').addEventListener('submit', function(event) {
   });
 
 
-const conveyorBelt = document.querySelector('.conveyor-belt');
-const slots = document.querySelectorAll('.slot');
-const startBtn = document.getElementById('start-btn');
-const resetBtn = document.getElementById('reset-btn');
-
-let items = [];
-let isRunning = false;
-
-function createItem() {
-  const item = document.createElement('div');
-  item.classList.add('item');
-  item.style.backgroundColor = getRandomColor();
-  conveyorBelt.appendChild(item);
-  items.push(item);
-}
-
-function getRandomColor() {
-  const colors = ['black', 'red', 'gold'];
-  return colors[Math.floor(Math.random() * colors.length)];
-}
-
-function moveItems() {
-  items.forEach(item => {
-    item.style.left = `${parseFloat(item.style.left) + 1}px`;
-    if (parseFloat(item.style.left) >= conveyorBelt.offsetWidth) {
-      item.style.left = '0';
-      sortItem(item);
+  const inputText = document.querySelector('.input-text');
+  const sortBtn = document.querySelector('.sort-btn');
+  const chute1 = document.querySelector('.chute1');
+  const chute2 = document.querySelector('.chute2');
+  const chute3 = document.querySelector('.chute3');
+  const messages = document.querySelector('.messages');
+  
+  let chute1Count = 0;
+  let chute2Count = 0;
+  let chute3Count = 0;
+  
+  function sortItems() {
+    const input = inputText.value.toLowerCase();
+    inputText.value = '';
+  
+    if (input === '1') {
+      if (chute3Count < 3) {
+        const item = document.createElement('div');
+        item.classList.add('item', 'item1');
+        chute3.appendChild(item);
+        chute3Count++;
+        setTimeout(() => {
+          item.remove();
+        }, 3000);
+      } else {
+        messages.textContent = 'Chute 3 is full';
+      }
+    } else if (input === '2') {
+      if (chute2Count < 3) {
+        const item = document.createElement('div');
+        item.classList.add('item', 'item2');
+        chute2.appendChild(item);
+        chute2Count++;
+        setTimeout(() => {
+          item.remove();
+        }, 3000);
+      } else {
+        messages.textContent = 'Chute 2 is full';
+      }
+    } else if (input === '3') {
+      if (chute1Count < 3) {
+        const item = document.createElement('div');
+        item.classList.add('item', 'item3');
+        chute1.appendChild(item);
+        chute1Count++;
+        setTimeout(() => {
+          item.remove();
+        }, 3000);
+      } else {
+        messages.textContent = 'Chute 1 is full';
+      }
     }
-  });
-  if (isRunning) {
-    requestAnimationFrame(moveItems);
   }
-}
-
-function sortItem(item) {
-  const color = item.style.backgroundColor;
-  if (color === 'black') {
-    slots[2].appendChild(item);
-  } else if (color === 'red') {
-    slots[0].appendChild(item);
-  } else {
-    slots[1].appendChild(item);
-  }
-  checkSlotFull();
-}
-
-function checkSlotFull() {
-  for (let i = 0; i < slots.length; i++) {
-    if (slots[i].children.length === 3) {
-      stopSystem();
-    }
-  }
-}
-
-function stopSystem() {
-  isRunning = false;
-  alert('One of the slots is full. The system has stopped.');
-}
-
-startBtn.addEventListener('click', () => {
-  if (!isRunning) {
-    isRunning = true;
-    createItem();
-    moveItems();
-  }
-});
-
-resetBtn.addEventListener('click', () => {
-  isRunning = false;
-  items.forEach(item => item.remove());
-  items = [];
-  for (let i = 0; i < slots.length; i++) {
-    slots[i].innerHTML = '';
-  }
-});
+  
+  sortBtn.addEventListener('click', sortItems);

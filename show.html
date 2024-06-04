@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Webpage</title>
+  <title>AI3705 Final Project</title>
   <link rel="stylesheet" href="styles.css"> <!-- 引入外部CSS文件 -->
 </head>
 <body>
@@ -49,11 +49,21 @@
           message.textContent = `You entered: ${myInput.value}`;
         }); 
       </script>
+
     </section>
 
-    <section>
-      <h2>Part two: Demonstration of simulated industrial processes</h2>
-    </section>
+    <div class="sorting-system">
+      <div class="input-area">
+        <input type="text" class="input-text" placeholder="Please Enter 1, 2 or 3">
+        <button class="sort-btn">Sort</button>
+      </div>
+      <div class="chutes">
+        <div class="chute chute1"></div>
+        <div class="chute chute2"></div>
+        <div class="chute chute3"></div>
+      </div>
+      <div class="messages"></div>
+    </div>
 
     <section>
       
@@ -74,7 +84,7 @@
   </main>
 
   <footer>
-    <p>&copy; 2023 My Webpage. All rights reserved.</p>
+    <p>&copy; 2024 AI3705 Final Project. All rights reserved.</p>
   </footer>
 
   <script src="script.js"></script>
