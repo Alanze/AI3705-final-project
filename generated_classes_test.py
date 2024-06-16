@@ -87,5 +87,14 @@ class System:
 
 if __name__ == '__main__': 
    #Please input the color of workpiece 
-   user_input=input('Please input the color') 
+   user_input=input('Please input the color:') 
    simulation_system=System(user_input) 
+   state=simulation_system.workpiece.state 
+   print(state) 
+   simulation_system.step_1() 
+   simulation_system.step_2() 
+   simulation_system.step_3() 
+   simulation_system.step_4() 
+   simulation_system.step_5() 
+   state=simulation_system.workpiece.state 
+   print(state) 
