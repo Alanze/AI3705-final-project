@@ -158,11 +158,12 @@ def generate_class_code(parsed_data):
     code +=f"   simulation_system=System(user_input) \n"
     code +=f"   state=simulation_system.workpiece.state \n"
     code +=f"   print(state) \n"
-    code +=f"   simulation_system.step_1() \n"
-    code +=f"   simulation_system.step_2() \n"
-    code +=f"   simulation_system.step_3() \n"
-    code +=f"   simulation_system.step_4() \n"
-    code +=f"   simulation_system.step_5() \n"
+    for i in range(1,step_counter):
+        code +=f"   simulation_system.step_{i}() \n"
+    # code +=f"   simulation_system.step_2() \n"
+    # code +=f"   simulation_system.step_3() \n"
+    # code +=f"   simulation_system.step_4() \n"
+    # code +=f"   simulation_system.step_5() \n"
     code +=f"   state=simulation_system.workpiece.state \n"
     code +=f"   print(state) \n"
     return code
@@ -176,7 +177,7 @@ def main(input_file, output_file):
 
 if __name__ == "__main__":
     input_file = 'my_input_test.txt'  # 输入文件路径
-    output_file = 'generated_classes_test.py'  # 输出文件路径
+    output_file = 'generated_code.py'  # 输出文件路径
     test_data=parse_file(input_file)
     print(test_data['steps'])
     main(input_file, output_file)
