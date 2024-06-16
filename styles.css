@@ -135,66 +135,44 @@ body {
     line-height: 1.6; /* 列表行高 */
   }
 
-  .sorting-system {
-  width: 800px;
-  margin: 0 auto;
-  text-align: center;
+  /* 传送带样式 */
+.conveyor {
+  width: 600px;
+  height: 20px;
+  background-color: gray;
+  position: relative;
+  margin: 20px auto;
 }
 
-.input-area {
-  margin-bottom: 20px;
+/* 工件样式 */
+.workpiece {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: -20px;
+  transition: left 0.5s, top 0.5s;
 }
 
-.input-text {
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 200px;
-}
-
-.sort-btn {
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.chutes {
-  display: flex;
-  justify-content: space-between;
-}
-
+/* 下料口样式 */
 .chute {
-  width: 200px;
-  height: 300px;
-  border: 3px solid #270404;
-  overflow-y: auto;
-}
-
-.item {
   width: 50px;
-  height: 50px;
-  margin: 10px auto;
+  height: 100px;
+  background-color: lightgray;
+  position: absolute;
+  top: 20px;
 }
 
-.item1 {
-  background-color: black;
-}
+/* 下料口位置 */
+.chute1 { left: 100px; }
+.chute2 { left: 300px; }
+.chute3 { left: 500px; }
 
-.item2 {
-  background-color: gold;
-}
-
-.item3 {
-  background-color: red;
-}
-
-.messages {
-  margin-top: 20px;
-  font-size: 16px;
-  font-weight: bold;
+/* 传感器样式 */
+.sensor {
+  width: 10px;
+  height: 10px;
+  background-color: blue;
+  position: absolute;
+  top: -10px;
+  left: 0;
 }

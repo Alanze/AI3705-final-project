@@ -84,59 +84,52 @@ document.getElementById('myForm').addEventListener('submit', function(event) {
     }, 6000);
   });
 
+  document.getElementById('animationForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const animationCase = document.getElementById('animationCase').value;
+    startAnimation(animationCase);
+});
 
-  const inputText = document.querySelector('.input-text');
-  const sortBtn = document.querySelector('.sort-btn');
-  const chute1 = document.querySelector('.chute1');
-  const chute2 = document.querySelector('.chute2');
-  const chute3 = document.querySelector('.chute3');
-  const messages = document.querySelector('.messages');
-  
-  let chute1Count = 0;
-  let chute2Count = 0;
-  let chute3Count = 0;
-  
-  function sortItems() {
-    const input = inputText.value.toLowerCase();
-    inputText.value = '';
-  
-    if (input === '1') {
-      if (chute3Count < 3) {
-        const item = document.createElement('div');
-        item.classList.add('item', 'item1');
-        chute3.appendChild(item);
-        chute3Count++;
-        setTimeout(() => {
-          item.remove();
-        }, 3000);
-      } else {
-        messages.textContent = 'Chute 3 is full';
-      }
-    } else if (input === '2') {
-      if (chute2Count < 3) {
-        const item = document.createElement('div');
-        item.classList.add('item', 'item2');
-        chute2.appendChild(item);
-        chute2Count++;
-        setTimeout(() => {
-          item.remove();
-        }, 3000);
-      } else {
-        messages.textContent = 'Chute 2 is full';
-      }
-    } else if (input === '3') {
-      if (chute1Count < 3) {
-        const item = document.createElement('div');
-        item.classList.add('item', 'item3');
-        chute1.appendChild(item);
-        chute1Count++;
-        setTimeout(() => {
-          item.remove();
-        }, 3000);
-      } else {
-        messages.textContent = 'Chute 1 is full';
-      }
+function startAnimation(caseType) {
+    const conveyor = document.getElementById('conveyor');
+    const workpiece = document.createElement('div');
+    workpiece.classList.add('workpiece');
+
+    if (caseType === 'case1') {
+        workpiece.style.backgroundColor = 'black';
+    } else if (caseType === 'case2') {
+        workpiece.style.backgroundColor = 'silver';
+    } else if (caseType === 'case3') {
+        workpiece.style.backgroundColor = 'red';
+    } else {
+        alert('Invalid case');
+        return;
     }
-  }
-  
-  sortBtn.addEventListener('click', sortItems);
+
+    conveyor.appendChild(workpiece);
+    let position = 0;
+    const interval = setInterval(() => {
+        position += 5;
+        workpiece.style.left = position + 'px';
+
+        if (position >= 580) {
+            clearInterval(interval);
+            conveyor.removeChild(workpiece);
+        } else if (caseType === 'case1' && position >= 500) {
+            clearInterval(interval);
+            workpiece.style.top = '40px';
+            workpiece.style.left = '500px';
+            setTimeout(() => conveyor.removeChild(workpiece), 500);
+        } else if (caseType === 'case2' && position >= 300) {
+            clearInterval(interval);
+            workpiece.style.top = '40px';
+            workpiece.style.left = '300px';
+            setTimeout(() => conveyor.removeChild(workpiece), 500);
+        } else if (caseType === 'case3' && position >= 100) {
+            clearInterval(interval);
+            workpiece.style.top = '40px';
+            workpiece.style.left = '100px';
+            setTimeout(() => conveyor.removeChild(workpiece), 500);
+        }
+    }, 100); // 调整时间间隔以控制动画速度
+}
