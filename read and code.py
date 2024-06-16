@@ -154,8 +154,17 @@ def generate_class_code(parsed_data):
     #         step_counter += 1
     code +=f"if __name__ == '__main__': \n"
     code +=f"   #Please input the color of workpiece \n"
-    code +=f"   user_input=input('Please input the color') \n"
+    code +=f"   user_input=input('Please input the color:') \n"
     code +=f"   simulation_system=System(user_input) \n"
+    code +=f"   state=simulation_system.workpiece.state \n"
+    code +=f"   print(state) \n"
+    code +=f"   simulation_system.step_1() \n"
+    code +=f"   simulation_system.step_2() \n"
+    code +=f"   simulation_system.step_3() \n"
+    code +=f"   simulation_system.step_4() \n"
+    code +=f"   simulation_system.step_5() \n"
+    code +=f"   state=simulation_system.workpiece.state \n"
+    code +=f"   print(state) \n"
     return code
 
 def main(input_file, output_file):
