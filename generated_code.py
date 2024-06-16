@@ -1,5 +1,9 @@
 import os 
 import numpy as np 
+
+import webbrowser
+from flask import Flask, render_template
+
 class ConveyorBelt:
     def __init__(self):
         self.state = None
@@ -80,21 +84,16 @@ class System:
     def step_4(self):
         self.conveyorbelt.state = 'stopped'
 
-
     def step_5(self):
         self.barrierarm.state = 'extended'
 
+app = Flask(__name__)
+@app.route('/show')
+def show():
+    # Pass the state to HTML file
+    return render_template('show.html')
 
-if __name__ == '__main__': 
-   #Please input the color of workpiece 
-   user_input=input('Please input the color:') 
-   simulation_system=System(user_input) 
-   state=simulation_system.workpiece.state 
-   print(state) 
-   simulation_system.step_1() 
-   simulation_system.step_2() 
-   simulation_system.step_3() 
-   simulation_system.step_4() 
-   simulation_system.step_5() 
-   state=simulation_system.workpiece.state 
-   print(state) 
+if __name__ == '__main__':
+    
+    webbrowser.open('http://127.0.0.1:8080/show')
+    app.run(debug=True, port=8080)
