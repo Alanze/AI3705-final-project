@@ -17,3 +17,7 @@ For pip users, please type the command `pip install flask`
 
 - run `generated_code.py` to check the result in terminal and the web
 
+### Result
+
+![picture](pic.png)
+
