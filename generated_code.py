@@ -96,8 +96,9 @@ def show():
 @app.route('/process_case', methods=['POST'])
 def process_case():
     case = request.form['animationCase']
-    color_map = {'case1': 'red', 'case2': 'metallic', 'case3': 'black'}
+    color_map = {'case1': 'black', 'case2': 'metallic', 'case3': 'red'}
     color = color_map.get(case, 'black')  # Default to 'black' if case is not found
+    print(f"The color is: {color}")
     system = System(color)
     print(f"Initial workpiece state: {system.workpiece.state}")
     system.step_1()
