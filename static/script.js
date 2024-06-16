@@ -84,16 +84,33 @@ document.getElementById('myForm').addEventListener('submit', function(event) {
     }, 6000);
   });
 
-  document.getElementById('animationForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    const animationCase = document.getElementById('animationCase').value;
-    startAnimation(animationCase);
+  document.getElementById('animationForm').addEventListener('submit', function(e) {
+    e.preventDefault();  // 阻止表单默认提交行为
+    var animationCase = document.getElementById('animationCase').value;
+
+    fetch('/process_case', {
+        method: 'POST',
+        body: new URLSearchParams({'animationCase': animationCase}),
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert(data.result);  // 使用 alert 或其他方式在页面上显示结果
+        startAnimation(animationCase);  // 根据服务器响应触发动画
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
 });
 
 function startAnimation(caseType) {
     const conveyor = document.getElementById('conveyor');
+    conveyor.innerHTML = ''; // 清空传送带上的内容
     const workpiece = document.createElement('div');
     workpiece.classList.add('workpiece');
+    workpiece.style.position = 'absolute'; // 确保工件可以移动
 
     if (caseType === 'case1') {
         workpiece.style.backgroundColor = 'black';
@@ -119,7 +136,7 @@ function startAnimation(caseType) {
             clearInterval(interval);
             workpiece.style.top = '40px';
             workpiece.style.left = '500px';
-            setTimeout(() => conveyor.removeChild(workpiece), 500);
+            setTimeout(() => conveyor.removeChild(workiece), 500);
         } else if (caseType === 'case2' && position >= 300) {
             clearInterval(interval);
             workpiece.style.top = '40px';

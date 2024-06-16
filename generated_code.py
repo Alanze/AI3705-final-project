@@ -2,7 +2,7 @@ import os
 import numpy as np 
 
 import webbrowser
-from flask import Flask, render_template
+from flask import Flask, render_template, request, jsonify
 
 class ConveyorBelt:
     def __init__(self):
@@ -92,6 +92,21 @@ app = Flask(__name__)
 def show():
     # Pass the state to HTML file
     return render_template('show.html')
+
+@app.route('/process_case', methods=['POST'])
+def process_case():
+    case = request.form['animationCase']
+    color_map = {'case1': 'red', 'case2': 'metallic', 'case3': 'black'}
+    color = color_map.get(case, 'black')  # Default to 'black' if case is not found
+    system = System(color)
+    print(f"Initial workpiece state: {system.workpiece.state}")
+    system.step_1()
+    system.step_2()
+    system.step_3()
+    system.step_4()
+    system.step_5()
+    print(f"Final workpiece state: {system.workpiece.state}")
+    return jsonify({'result': f'Workpiece stored in {system.workpiece.state}'})
 
 if __name__ == '__main__':
     
